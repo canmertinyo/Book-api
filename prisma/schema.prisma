@@ -6,3 +6,23 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Author {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt DateTime @default(now())
+  createdAt DateTime @updatedAt
+  firstName String
+  lastName  String
+  Book      Book[]
+}
+
+model Book {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt     DateTime @default(now())
+  createdAt     DateTime @updatedAt
+  title         String
+  isFiction     Boolean
+  datePublished DateTime
+  author        Author   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  authorId      String   @db.ObjectId
+}
