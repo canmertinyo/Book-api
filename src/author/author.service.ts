@@ -67,3 +67,11 @@ export const updateAuthor = async (
     },
   });
 };
+
+export const deleteAuthor = async (toDeleteId: string): Promise<Author> => {
+  return await db.author.delete({
+    where: {
+      id: toDeleteId,
+    },
+  });
+};
