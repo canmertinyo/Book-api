@@ -1,6 +1,6 @@
 import { db } from '../utils/db.server';
 
-type Author = {
+export type Author = {
   id: string;
   firstName: string;
   lastName: string;
