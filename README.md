@@ -3,10 +3,10 @@
 </p>
 
 # Quick brief
-You can create book with this api! 
+You can create/update/delete books and authors
 
 # Installation
-First we must install all dependencies. Type this in terminal : 
+First we must install all dependencies. write this in terminal : 
 ```ts
 npm install 
 ```
