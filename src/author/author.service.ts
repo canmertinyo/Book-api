@@ -4,6 +4,7 @@ type Author = {
   id: string;
   firstName: string;
   lastName: string;
+  createdAt: Date;
 };
 
 export const getAllAuthors = (): Promise<Author[]> => {
@@ -12,6 +13,7 @@ export const getAllAuthors = (): Promise<Author[]> => {
       id: true,
       firstName: true,
       lastName: true,
+      createdAt: true,
     },
   });
 };
