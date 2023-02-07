@@ -11,32 +11,40 @@
 -Prisma
 -Mongodb
 -Helmet
-
+-EsLint
 
 # Quick brief
+
 You can create/update/delete books and authors
 
 # Installation
-First we must install all dependencies. write this in terminal : 
+
+First we must install all dependencies. write this in terminal :
+
 ```ts
-npm install 
+npm install
 ```
 
-#Setting up database
-.env configuration : 
+# Setting up database
+
+.env configuration :
+
 ```env
 DATABASE_URL="yourdatabaselink"
 PORT=5000 (or you can put here a different port)
 ```
+
 and open our prisma/schema.prisma file
 define your database provider :
 for example mine is mongodb. So i wrote here "mongodb"
+
 ```prisma
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 ```
+
 # Contributing
 
 1. Fork this repository.
