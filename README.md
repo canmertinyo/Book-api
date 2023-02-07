@@ -2,6 +2,8 @@
 <img src="https://i.imgur.com/LWHxXg1.png" alt="a" width="800" height="300"/>
 </p>
 
+<p align="center">⚡A useful books api with typescript&express</p>
+
 # Quick brief
 You can create/update/delete books and authors
 
