@@ -26,7 +26,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "express-validator": "^6.14.3"
+    "express-validator": "^6.14.3",
+    "magnodi": "^1.1.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.13",
