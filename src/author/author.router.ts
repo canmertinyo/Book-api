@@ -45,3 +45,34 @@ authorRouter.post(
     }
   }
 );
+
+authorRouter.put(
+  '/:id',
+  body('firstName').isString(),
+  body('lastName').isString(),
+  async (request: Request, response: Response): Promise<any> => {
+    const errors = validationResult(request);
+    if (!errors.isEmpty()) {
+      return response.status(400).json({ errors: errors.array });
+    }
+
+    const id: string = request.params.id;
+    try {
+      const author = request.body;
+      const updatedAuthor = await AuthorService.updateAuthor(author, id);
+      return response.status(200).json(updatedAuthor);
+    } catch (error: any) {
+      return response.status(500).json(error.message);
+    }
+  }
+);
+
+authorRouter.delete('/:id', async (request: Request, response: Response) => {
+  const id: string = request.params.id;
+  try {
+    await AuthorService.deleteAuthor(id);
+    return response.status(200).json({ message: 'author has been deleted!' });
+  } catch (error: any) {
+    return response.status(500).json(error.message);
+  }
+});
