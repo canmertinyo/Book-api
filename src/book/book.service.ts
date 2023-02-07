@@ -42,7 +42,6 @@ export const createBook = async (book: BookWrite): Promise<BookRead> => {
     select: {
       id: true,
       title: true,
-      datePublished: true,
       isFiction: true,
       authorId: true,
     },

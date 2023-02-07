@@ -29,7 +29,7 @@ bookRouter.get('/:id', async (request: Request, response: Response) => {
 bookRouter.post(
   '/',
   body('title').isString(),
-  body('authorId').isInt(),
+  body('authorId').isString(),
   body('datePublished').isDate().toDate(),
   body('isFiction').isBoolean(),
   async (request: Request, response: Response) => {

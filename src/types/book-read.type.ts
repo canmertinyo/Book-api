@@ -1,7 +1,7 @@
 export type BookRead = {
   id: string;
   title: string;
-  datePublished: Date;
+  datePublished?: Date;
   isFiction: boolean;
   authorId: string;
 };
