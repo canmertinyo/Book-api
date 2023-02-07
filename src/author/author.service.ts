@@ -17,3 +17,11 @@ export const getAllAuthors = (): Promise<Author[]> => {
     },
   });
 };
+
+export const getAuthor = (idToFind: string): Promise<Author | null> => {
+  return db.author.findUnique({
+    where: {
+      id: idToFind,
+    },
+  });
+};
