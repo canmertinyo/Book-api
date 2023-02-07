@@ -3,6 +3,8 @@ import cors from 'cors';
 import { authorRouter } from './author/index';
 import { bookRouter } from './book/index';
 import { Injectable } from 'magnodi';
+import helmet from 'helmet';
+import compression from 'compression';
 
 @Injectable()
 export class Server {
@@ -21,6 +23,13 @@ export class Server {
   public initializeMiddlewares(): void {
     this.server.use(cors());
     this.server.use(express.json());
+    this.server.use(
+      helmet({
+        referrerPolicy: { policy: 'no-referrer' },
+        contentSecurityPolicy: true,
+      })
+    );
+    this.server.use(compression({ level: 6 }));
   }
   public routers(): void {
     this.server.use('/api/authors', authorRouter);
