@@ -44,3 +44,26 @@ export const createAuthor = async (
     },
   });
 };
+
+export const updateAuthor = async (
+  author: Omit<Author, 'id'>,
+  id: string
+): Promise<Author> => {
+  const { firstName, lastName } = author;
+  return db.author.update({
+    where: {
+      id,
+    },
+    data: {
+      firstName,
+      lastName,
+    },
+    select: {
+      id: true,
+      firstName: true,
+      lastName: true,
+      createdAt: true,
+      updatedAt: false,
+    },
+  });
+};
