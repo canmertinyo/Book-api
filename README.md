@@ -4,6 +4,15 @@
 
 <p align="center">⚡A useful books api with typescript&express</p>
 
+#Third party:
+-Magnodi
+-Cors
+-Express
+-Prisma
+-Mongodb
+-Helmet
+
+
 # Quick brief
 You can create/update/delete books and authors
 
