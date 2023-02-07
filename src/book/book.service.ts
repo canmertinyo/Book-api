@@ -1,12 +1,5 @@
 import { db } from '../utils/db.server';
-
-type BookRead = {
-  id: string;
-  title: string;
-  datePublished: Date;
-  isFiction: boolean;
-  authorId: string;
-};
+import { BookWrite, BookRead } from '../types/index';
 
 export const listAllBooks = async (): Promise<BookRead[]> => {
   return db.book.findMany({
@@ -33,13 +26,6 @@ export const getBook = async (id: string): Promise<BookRead | null> => {
       authorId: true,
     },
   });
-};
-
-type BookWrite = {
-  title: string;
-  datePublished: Date;
-  authorId: string;
-  isFiction: boolean;
 };
 
 export const createBook = async (book: BookWrite): Promise<BookRead> => {

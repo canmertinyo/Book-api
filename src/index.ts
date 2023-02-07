@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { Container } from 'magnodi';
-import { Run, Server } from './server';
+import { Run } from './server';
 
 const server = Container.resolve<Run>(Run);
 
