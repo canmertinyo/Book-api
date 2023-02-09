@@ -1,16 +1,17 @@
-import express from 'express';
+import express, { NextFunction } from 'express';
+import { validationResult } from 'express-validator';
 import type { Request, Response } from 'express';
-import { body, validationResult } from 'express-validator';
 import * as BookService from './book.service';
+import { validateBook } from '../validation/index';
 
 export const bookRouter = express.Router();
 
 bookRouter.get('/', async (request: Request, response: Response) => {
   try {
     const books = await BookService.listAllBooks();
-    return response.status(200).json(books);
+    return response.json(books);
   } catch (error: any) {
-    return response.status(500).json(error.message);
+    return response.json(error.message);
   }
 });
 bookRouter.get('/:id', async (request: Request, response: Response) => {
@@ -19,31 +20,26 @@ bookRouter.get('/:id', async (request: Request, response: Response) => {
   try {
     const book = await BookService.getBook(id);
     if (book) {
-      return response.status(200).json(book);
+      return response.json(book);
     }
   } catch (error: any) {
-    return response.status(500).json(error.message);
+    return response.json(error.message);
   }
 });
 
 bookRouter.post(
   '/',
-  body('title').isString(),
-  body('authorId').isString(),
-  body('datePublished').isDate().toDate(),
-  body('isFiction').isBoolean(),
+  validateBook(),
   async (request: Request, response: Response) => {
     const errors = validationResult(request);
+    const book = await request.body;
+
     if (!errors.isEmpty()) {
-      return response.status(400).json({ errors: errors.array() });
+      return response.json({ errors: errors.array() });
     }
-    try {
-      const book = request.body;
-      const newBook = await BookService.createBook(book);
-      return response.status(201).json(newBook);
-    } catch (error: any) {
-      return response.status(500).json(error.message);
-    }
+
+    const newBook = await BookService.createBook(book);
+    return response.json(newBook);
   }
 );
 
@@ -51,8 +47,8 @@ bookRouter.delete('/:id', async (request: Request, response: Response) => {
   const id: string = request.params.id;
   try {
     await BookService.deleteBook(id);
-    return response.status(204).json('Book was successfully deleted');
+    return response.json('Book was successfully deleted');
   } catch (error: any) {
-    return response.status(500).json(error.message);
+    return response.json(error.message);
   }
 });
