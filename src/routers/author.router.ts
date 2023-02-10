@@ -1,7 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
-import { AuthorServices } from './author.service';
+import { AuthorServices } from '../author/author.service';
 import { Injectable } from 'magnodi';
 import { validateAuthor } from '../validation';
 

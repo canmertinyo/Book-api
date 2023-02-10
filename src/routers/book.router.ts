@@ -1,7 +1,7 @@
 import express, { NextFunction } from 'express';
 import { validationResult } from 'express-validator';
 import type { Request, Response } from 'express';
-import * as BookService from './book.service';
+import * as BookService from '../book/book.service';
 import { validateBook } from '../validation/index';
 
 export const bookRouter = express.Router();
