@@ -1,4 +1,4 @@
-import express, { NextFunction } from 'express';
+import express from 'express';
 import { validationResult } from 'express-validator';
 import type { Request, Response } from 'express';
 import * as BookService from '../book/book.service';

@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import cors from 'cors';
-import { AuthorRouters } from './author/index';
-import { bookRouter } from './book/index';
+import { AuthorRouters, bookRouter, registerRouter } from './routers/index';
 import { Injectable } from 'magnodi';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -36,6 +35,7 @@ export class Server {
   public routers(): void {
     this.server.use(`${this.PREFIX}authors`, this.authorRouters.authorRouter);
     this.server.use(`${this.PREFIX}books`, bookRouter);
+    this.server.use(`${this.PREFIX}signup`, registerRouter);
   }
 }
 

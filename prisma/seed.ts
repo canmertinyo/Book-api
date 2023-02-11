@@ -1,5 +1,5 @@
 import { db } from '../src/utils/db.server';
-import { Author, Book } from '../src/types/index';
+import { Author, Book, User } from '../src/types/index';
 
 async function seed() {
   await Promise.all(
@@ -27,6 +27,17 @@ async function seed() {
           isFiction,
           datePublished,
           authorId: author!.id,
+        },
+      });
+    })
+  );
+  await Promise.all(
+    getAllUsers().map((users) => {
+      db.user.create({
+        data: {
+          userName: users.userName,
+          password: users.password,
+          isAdmin: users.isAdmin,
         },
       });
     })
@@ -64,6 +75,27 @@ function getBooks(): Array<Book> {
       title: 'The wild animals',
       isFiction: false,
       datePublished: new Date(),
+    },
+  ];
+}
+
+function getAllUsers(): Array<User> {
+  //just testing. Your data will not be shown in here
+  return [
+    {
+      userName: 'canmertinyo',
+      password: '123456',
+      isAdmin: true,
+    },
+    {
+      userName: 'cancevik',
+      password: '123456',
+      isAdmin: true,
+    },
+    {
+      userName: 'master-of-puppets',
+      password: '123123312',
+      isAdmin: true,
     },
   ];
 }
