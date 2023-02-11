@@ -4,8 +4,8 @@ import bcrypt from 'bcrypt';
 
 export type Author = {
   id: string;
-  firstName?: string;
-  lastName?: string;
+  firstName: string;
+  lastName: string;
   createdAt: Date;
 };
 
@@ -36,7 +36,7 @@ export class AuthorServices {
 
   public createAuthor = async (author: Omit<Author, 'id'>): Promise<Author> => {
     const { firstName, lastName } = author;
-    const createAuthor: any = db.author.create({
+    const createAuthor: any = await db.author.create({
       data: {
         firstName,
         lastName,

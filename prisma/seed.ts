@@ -35,9 +35,10 @@ async function seed() {
     getAllUsers().map((users) => {
       db.user.create({
         data: {
-          userName: users.userName,
+          name: users.name,
           password: users.password,
           isAdmin: users.isAdmin,
+          email: users.email,
         },
       });
     })
@@ -83,19 +84,22 @@ function getAllUsers(): Array<User> {
   //just testing. Your data will not be shown in here
   return [
     {
-      userName: 'canmertinyo',
+      name: 'canmertinyo',
       password: '123456',
       isAdmin: true,
+      email: 'squalcan@gmail.com',
     },
     {
-      userName: 'cancevik',
+      name: 'cancevik',
       password: '123456',
       isAdmin: true,
+      email: 'canccevik@outlook.com',
     },
     {
-      userName: 'master-of-puppets',
+      name: 'master-of-puppets',
       password: '123123312',
       isAdmin: true,
+      email: 'metallica@gmail.com',
     },
   ];
 }

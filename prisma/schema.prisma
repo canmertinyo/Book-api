@@ -32,4 +32,5 @@ model User {
   name     String  @unique
   password String
   isAdmin  Boolean
+  email    String
 }
