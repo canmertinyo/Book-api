@@ -24,6 +24,7 @@
   "homepage": "https://github.com/canmertinyo/web-rest-api#readme",
   "dependencies": {
     "@prisma/client": "^4.9.0",
+    "bcrypt": "^5.1.0",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
@@ -36,6 +37,7 @@
     "typescript-injections": "^3.0.0-alpha.3"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "@types/compression": "^1.7.2",
     "@types/cors": "^2.8.13",
     "@types/dotenv": "^8.2.0",
