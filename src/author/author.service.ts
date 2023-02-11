@@ -3,8 +3,8 @@ import { db } from '../utils/db.server';
 
 export type Author = {
   id: string;
-  firstName: string;
-  lastName: string;
+  firstName?: string;
+  lastName?: string;
   createdAt: Date;
 };
 
@@ -12,8 +12,8 @@ export type Author = {
 export class AuthorServices {
   constructor() {}
 
-  public getAllAuthors = (): Promise<Author[]> => {
-    return db.author.findMany({
+  public getAllAuthors = async (): Promise<Author> => {
+    const author: any = await db.author.findMany({
       select: {
         id: true,
         firstName: true,
@@ -21,19 +21,21 @@ export class AuthorServices {
         createdAt: true,
       },
     });
+    return author;
   };
 
-  public getAuthor = (idToFind: string): Promise<Author | null> => {
-    return db.author.findUnique({
+  public getAuthor = async (idToFind: string): Promise<Author | null> => {
+    const findUnique: any = db.author.findUnique({
       where: {
         id: idToFind,
       },
     });
+    return findUnique;
   };
 
   public createAuthor = async (author: Omit<Author, 'id'>): Promise<Author> => {
     const { firstName, lastName } = author;
-    return db.author.create({
+    const createAuthor: any = db.author.create({
       data: {
         firstName,
         lastName,
@@ -46,6 +48,7 @@ export class AuthorServices {
         updatedAt: false,
       },
     });
+    return createAuthor;
   };
 
   public updateAuthor = async (
@@ -53,7 +56,7 @@ export class AuthorServices {
     id: string
   ): Promise<Author> => {
     const { firstName, lastName } = author;
-    return db.author.update({
+    const authorUpdate: any = db.author.update({
       where: {
         id,
       },
@@ -69,13 +72,15 @@ export class AuthorServices {
         updatedAt: false,
       },
     });
+    return authorUpdate;
   };
 
   public deleteAuthor = async (toDeleteId: string): Promise<Author> => {
-    return await db.author.delete({
+    const deleteAuthor: any = await db.author.delete({
       where: {
         id: toDeleteId,
       },
     });
+    return deleteAuthor;
   };
 }

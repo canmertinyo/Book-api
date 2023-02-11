@@ -1,5 +1,5 @@
 export type User = {
-  userName: string;
+  name: string;
   password: string;
   isAdmin: boolean;
 };
