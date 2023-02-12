@@ -28,12 +28,9 @@ model Book {
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  name      String   @unique
-  password  String
-  isAdmin   Boolean
-  email     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  isAuthor  Boolean  @default(false)
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  name     String  @unique
+  password String
+  isAdmin  Boolean
+  email    String
 }

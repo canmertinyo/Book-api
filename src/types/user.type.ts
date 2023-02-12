@@ -3,6 +3,4 @@ export type User = {
   password: string;
   isAdmin: boolean;
   email: string;
-  isAuthor: boolean;
-  createdAt: Date;
 };
