@@ -12,14 +12,8 @@ export class Server extends Options {
 
   constructor(public authorRouters: AuthorRouters) {
     super();
+    this.server = express();
   }
-  // protected PORT: number;
-  // protected PREFIX: string;
-  // constructor(public authorRouters: AuthorRouters) {
-  //   this.server = express();
-  //   this.PORT = parseInt(process.env.PORT as string, 10);
-  //   this.PREFIX = process.env.PREFIX as string;
-  // }
 
   public createServer(): void {
     this.server.listen(this.PORT);
