@@ -1,5 +1,5 @@
 import { db } from '../src/common/utils/db.server';
-import { Author, Book, User } from '../src/types/index';
+import { Author, Book, User } from '../src/common/types';
 
 async function seed() {
   await Promise.all(
