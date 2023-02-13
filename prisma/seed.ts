@@ -1,4 +1,4 @@
-import { db } from '../src/utils/db.server';
+import { db } from '../src/common/utils/db.server';
 import { Author, Book, User } from '../src/types/index';
 
 async function seed() {

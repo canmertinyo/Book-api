@@ -1,5 +1,5 @@
-import { db } from '../utils/db.server';
-import { BookWrite, BookRead } from '../types/index';
+import { db } from '../../common/utils/db.server';
+import { BookWrite, BookRead } from '../../common/types/index';
 
 export const listAllBooks = async (): Promise<BookRead[]> => {
   return db.book.findMany({

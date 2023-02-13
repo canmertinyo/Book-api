@@ -1,8 +1,8 @@
 import express from 'express';
 import { validationResult } from 'express-validator';
 import type { Request, Response } from 'express';
-import * as BookService from '../book/book.service';
-import { validateBook } from '../validation/index';
+import * as BookService from '../features/book/book.service';
+import { validateBook } from '../common/validation/index';
 
 export const bookRouter = express.Router();
 

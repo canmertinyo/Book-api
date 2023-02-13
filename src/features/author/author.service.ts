@@ -1,6 +1,5 @@
 import { Injectable } from 'magnodi';
-import { db } from '../utils/db.server';
-import bcrypt from 'bcrypt';
+import { db } from '../../common/utils/db.server';
 
 export type Author = {
   id: string;

@@ -4,17 +4,22 @@ import { AuthorRouters, bookRouter, registerRouter } from './routers/index';
 import { Injectable } from 'magnodi';
 import helmet from 'helmet';
 import compression from 'compression';
+import { Options } from './common/interfaces/server.options';
 
 @Injectable()
-export class Server {
+export class Server extends Options {
   protected server: Application;
-  protected PORT: number;
-  protected PREFIX: string;
+
   constructor(public authorRouters: AuthorRouters) {
-    this.server = express();
-    this.PORT = parseInt(process.env.PORT as string, 10);
-    this.PREFIX = process.env.PREFIX as string;
+    super();
   }
+  // protected PORT: number;
+  // protected PREFIX: string;
+  // constructor(public authorRouters: AuthorRouters) {
+  //   this.server = express();
+  //   this.PORT = parseInt(process.env.PORT as string, 10);
+  //   this.PREFIX = process.env.PREFIX as string;
+  // }
 
   public createServer(): void {
     this.server.listen(this.PORT);

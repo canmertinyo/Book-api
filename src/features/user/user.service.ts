@@ -1,12 +1,10 @@
-import { db } from '../utils/db.server';
-import { User } from '../types/index';
+import { db } from '../../common/utils/db.server';
+import { User } from '../../common/types';
 import bcrypt from 'bcrypt';
 import jsonwebtoken from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '../../.env' });
-
-console.log(process.env.PORT);
 
 export const registerUser = async (user: User): Promise<User> => {
   const { name, password, isAdmin, email } = user;

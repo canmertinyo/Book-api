@@ -1,9 +1,9 @@
 import express from 'express';
 import type { Request, Response } from 'express';
 import { body, validationResult } from 'express-validator';
-import { AuthorServices } from '../author/author.service';
+import { AuthorServices } from '../features/author/author.service';
 import { Injectable } from 'magnodi';
-import { validateAuthor } from '../validation';
+import { validateAuthor } from '../common/validation';
 
 @Injectable()
 export class AuthorRouters {
