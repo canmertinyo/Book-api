@@ -1,6 +1,12 @@
 import { db } from '../utils/db.server';
 import { User } from '../types/index';
 import bcrypt from 'bcrypt';
+import jsonwebtoken from 'jsonwebtoken';
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../.env' });
+
+console.log(process.env.PORT);
 
 export const registerUser = async (user: User): Promise<User> => {
   const { name, password, isAdmin, email } = user;
@@ -31,5 +37,19 @@ export const registerUser = async (user: User): Promise<User> => {
       email: true,
     },
   });
+
+  const properties = {
+    payload: {
+      name: user.name,
+      password: user.password,
+      email: user.email,
+    },
+    privateKey: process.env.ACCESS_TOKEN_PRIVATE_KEY as string,
+  };
+
+  const signJwt = jsonwebtoken.sign(properties.payload, properties.privateKey, {
+    expiresIn: Math.floor(Date.now() / 1000) + 60 * 60,
+  });
+  console.log(signJwt);
   return userCreate;
 };
